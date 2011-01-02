@@ -1,8 +1,8 @@
 (function(){
   (typeof exports != 'undefined' && exports !== null ? exports : this).Retrie = (function(){
-    var _proto = _Class.prototype;
+    var _proto = Retrie.prototype;
     function _ctor(){} _ctor.prototype = _proto;
-    function _Class(strings, asPrefixes){
+    function Retrie(strings, asPrefixes){
       var str, _i, _len, _this = new _ctor;
       _this.tree = {};
       if (strings) {
@@ -12,7 +12,7 @@
         }
       }
       return _this;
-    }
+    } Retrie.name = 'Retrie';
     _proto.add = function(string, asPrefixes){
       var ref, i, _to, _name;
       ref = this.tree;
@@ -65,6 +65,6 @@
       }
       return recur(this.tree);
     };
-    return _Class;
+    return Retrie;
   }());
 }).call(this);

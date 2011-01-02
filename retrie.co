@@ -4,9 +4,9 @@
     @add str, asPrefixes for str of strings if strings
 
   # Adds `string` to the trie and returns self.
-  # If `asPrefixes`, instead adds every prefix of it. i.e.:
+  # If `asPrefixes`, instead adds every prefix of `string`. i.e.:
   #
-  #     Retrie().addPrefixes('ab') == RegexpTrie().add('a').add('ab')
+  #     Retrie().add('ab', true) == '' + Retrie().add('a').add('ab')
   #
   add: (string, asPrefixes) ->
     ref = @tree
