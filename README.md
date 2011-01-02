@@ -5,4 +5,4 @@ JS port of [@dankogai](http://twitter.com/dankogai)'s [RegexpTrie](http://search
 usage
 -----
     RegExp('^' + Retrie(['a', 'ab', 'ac', 'd']))  //=> /^(?:a[bc]?|d)/
-    RegExp('^' + Retrie(['abc'], true))           //=> /^a(?:b(?:cd?)?)?/
+    RegExp('^' + Retrie(['abcd'], true))          //=> /^a(?:b(?:cd?)?)?/
