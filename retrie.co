@@ -1,0 +1,35 @@
+(exports ? this).Retrie = class
+  (strings, asPrefixes) =>
+    @tree = {}
+    @add str, asPrefixes for str of strings if strings
+
+  # Adds `string` to the trie and returns self.
+  # If `asPrefixes`, instead adds every prefix of it. i.e.:
+  #
+  #     Retrie().addPrefixes('ab') == RegexpTrie().add('a').add('ab')
+  #
+  add: (string, asPrefixes) ->
+    ref = @tree
+    for i from string.length
+      ref = ref[string.charAt i] ||= if asPrefixes then {''} else {}
+    ref <<< {''} unless asPrefixes  # empty string as terminator
+    this
+
+  toString: ->
+    meta = /[.?*+^$|()\{\[\\]/
+    function recur ->
+      `LEAF_CHECK:`
+      if '' in it
+        `break LEAF_CHECK;` if chr for chr in it
+        return ''
+      alt = []; cc = []
+      for chr in it
+        unless chr then q = true; continue
+        (if sub = recur it[chr] then alt else cc)
+        .push chr.replace(meta, \\\$&) + sub
+      cconly = !alt.length
+      cc.length and alt.push if cc.1 then "[#{ cc.join '' }]" else cc.0
+      re = if alt.1 then "(?:#{ alt.join \| })" else alt.0
+      q and re = if cconly then re + \? else "(?:#{re})?"
+      re or ''
+    recur @tree

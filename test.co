@@ -1,0 +1,17 @@
+{Retrie} = require \./retrie
+assert   = require \assert
+
+assert.strictEqual do
+  'program(?:(?:m(?:er|ab(?:le|ility))|[s\\$]))?'
+  '' + Retrie <[
+    program
+    programs
+    program$
+    programmer
+    programmable
+    programmability
+  ]>
+
+assert.strictEqual do
+  'p(?:r(?:o(?:g(?:r(?:am?)?)?)?)?)?'
+  '' + Retrie <[program]>, true
