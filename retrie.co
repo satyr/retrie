@@ -16,7 +16,6 @@
     this
 
   toString: ->
-    meta = /[.?*+^$|()\{\[\\]/
     function recur ->
       `LEAF_CHECK:`
       if '' in it
@@ -25,8 +24,8 @@
       alt = []; cc = []
       for chr in it
         unless chr then q = true; continue
-        (if sub = recur it[chr] then alt else cc)
-        .push chr.replace(meta, \\\$&) + sub
+        (if sub = recur it[chr] then alt else cc).push \
+          (if ~'.?*+^$|(){[\\'.indexOf chr then \\ + chr else chr) + sub
       cconly = !alt.length
       cc.length and alt.push if cc.1 then "[#{ cc.join '' }]" else cc.0
       re = if alt.1 then "(?:#{ alt.join \| })" else alt.0
