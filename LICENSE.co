@@ -1,0 +1,11 @@
+console.dir Retrie:
+  copyright:
+    year  : 2011
+    author:
+      name: \satyr
+      mail: \murky.satyr\x40gmail.com
+      url : \http://satyr.github.com
+  license:
+    name: \MIT or \X11
+    url : \http://www.opensource.org/licenses/mit-license.php
+  url: \https://github.com/satyr/retrie/
