@@ -1,0 +1,43 @@
+<!DOCTYPE html><title>Retrie</title
+><link rel="stylesheet" href="index.css"/><link rel="stylesheet" href="../coco/doc/doc.css"/><link rel="icon" href="retrie.png"/><textarea id="words">if is instanceof import import_all</textarea
+><div id="ctrls"><button id="ex">Exact</button
+><button id="pr">Prefixes</button
+><label for="sep"> seperator: <input id="sep" value="\s+"/></label
+></div
+><textarea id="regex"></textarea
+><script>new function (){
+    var l, that, i, _i, _ref, _len, _fn = function(i, l){
+      return l.onclick = function(){
+        return run(i);
+      };
+    }, _this = this;
+    for (_i = 0, _len = (_ref = document.body.getElementsByTagName('*')).length; _i < _len; ++_i) {
+      l = _ref[_i];
+      if (that = l.id) {
+        this[that] = l;
+      }
+    }
+    for (i = 0, _len = (_ref = [this['ex'], this['pr']]).length; i < _len; ++i) {
+      l = _ref[i];
+      _fn(i, l);
+    }
+    function run(it){
+      var re;
+      re = (function(){
+        try {
+          return RegExp(this.sep.value);
+        } catch (RegExp) {
+          return this.re.value = SEP;
+        }
+      }.call(_this));
+      return _this.regex.value = Retrie(_this.words.value.split(re), it);
+    }
+    return run;
+  }</script
+><script src="retrie.js"></script
+><script src="../coco/doc/showdown.js"></script
+><script src="../coco/doc/prettify.js"></script
+><script src="../coco/doc/lang-co.js"></script
+><script>sources = ['retrie', 'index']</script
+><script src="../coco/doc/doc.js"></script
+>
