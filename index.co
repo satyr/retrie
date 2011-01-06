@@ -25,7 +25,7 @@ script 'new ' + ->
   @[that] = l if l.id for l of document.body.getElementsByTagName \*
   for l, i of @[\ex, \pr] then do -> l.onclick = -> run i
   function run =>
-    re = try RegExp @sep.value catch RegExp @re.value = SEP
+    re = try RegExp @sep.value catch then RegExp @re.value = SEP
     @regex.value = Retrie @words.value.split(re), it
 script src: \retrie.js
 script src: \../coco/doc/showdown.js

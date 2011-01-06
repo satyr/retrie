@@ -27,8 +27,8 @@
       re = (function(){
         try {
           return RegExp(this.sep.value);
-        } catch (RegExp) {
-          return this.re.value = SEP;
+        } catch (_e) {
+          return RegExp(this.re.value = SEP);
         }
       }.call(_this));
       return _this.regex.value = Retrie(_this.words.value.split(re), it);
