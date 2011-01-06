@@ -16,13 +16,17 @@ div id: \ctrls, ->
   button \Prefixes ,id: \pr
   label ' seperator: ', for: \sep, -> input id: \sep, value: SEP
 textarea id: \regex
+
+a href: \https://github.com/satyr/retrie/, -> img do
+  alt: \fork-me-on-github, id: \ribbon
+  src: \http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png
+
 script 'new ' + ->
   @[that] = l if l.id for l of document.body.getElementsByTagName \*
   for l, i of @[\ex, \pr] then do -> l.onclick = -> run i
   function run =>
     re = try RegExp @sep.value catch RegExp @re.value = SEP
     @regex.value = Retrie @words.value.split(re), it
-
 script src: \retrie.js
 script src: \../coco/doc/showdown.js
 script src: \../coco/doc/prettify.js

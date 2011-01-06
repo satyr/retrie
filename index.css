@@ -1,3 +1,13 @@
 textarea {display:block; width:99%; height:6em; border-width:2px 0}
 button {width:20%}
+
 #ctrls, #sep {text-align:center}
+
+#ribbon {
+ position: fixed; bottom: 0; left: 0; border: 0;
+         transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+     -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+ -webkit-transform: rotate(180deg);
+}
