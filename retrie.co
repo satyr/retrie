@@ -1,5 +1,5 @@
 (exports ? this).Retrie = class
-  (strings, asPrefixes) =>
+  (strings, asPrefixes) ~>
     @tree = {}
     @add str, asPrefixes for str of strings if strings
 
@@ -12,20 +12,18 @@
     ref = @tree
     for i from string.length
       ref = ref[string.charAt i] ||= if asPrefixes then {''} else {}
-    ref <<< {''} unless asPrefixes  # empty string as terminator
+    # Empty string indicates terminator.
+    ref <<< {''} unless asPrefixes
     this
 
   toString: ->
     function recur ->
-      `LEAF_CHECK:`
-      if '' in it
-        `break LEAF_CHECK;` if chr for chr in it
-        return ''
       alt = []; cc = []
       for chr in it
         unless chr then q = true; continue
         (if sub = recur it[chr] then alt else cc).push \
           (if ~'.?*+^$|(){[\\'.indexOf chr then \\ + chr else chr) + sub
+      return '' if q and not sub?
       cconly = !alt.length
       cc.length and alt.push if cc.1 then "[#{ cc.join '' }]" else cc.0
       re = if alt.1 then "(?:#{ alt.join \| })" else alt.0

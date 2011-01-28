@@ -11,7 +11,7 @@
       }
     }
     return _this;
-  } Retrie.name = 'Retrie';
+  } Retrie.displayName = 'Retrie';
   _proto.add = function(string, asPrefixes){
     var ref, i, _to, _name;
     ref = this.tree;
@@ -29,16 +29,7 @@
   };
   _proto.toString = function(){
     function recur(it){
-      var chr, alt, cc, q, sub, cconly, re;
-      LEAF_CHECK:
-      if ('' in it) {
-        for (chr in it) {
-          if (chr) {
-            break LEAF_CHECK;
-          }
-        }
-        return '';
-      }
+      var alt, cc, chr, q, sub, cconly, re;
       alt = [];
       cc = [];
       for (chr in it) {
@@ -47,6 +38,9 @@
           continue;
         }
         ((sub = recur(it[chr])) ? alt : cc).push((~'.?*+^$|(){[\\'.indexOf(chr) ? '\\' + chr : chr) + sub);
+      }
+      if (q && (sub == null)) {
+        return '';
       }
       cconly = !alt.length;
       cc.length && alt.push(cc[1]

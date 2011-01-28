@@ -10,11 +10,11 @@ link rel: \stylesheet, href: \index.css
 link rel: \stylesheet, href: \../coco/doc/doc.css
 link rel: \icon      , href: \retrie.png
 
-textarea 'if is instanceof import import_all', id: \words
+textarea 'if is instanceof import import_all' id: \words
 div id: \ctrls, ->
-  button \Exact    ,id: \ex
-  button \Prefixes ,id: \pr
-  label ' seperator: ', for: \sep, -> input id: \sep, value: SEP
+  button \Exact    id: \ex
+  button \Prefixes id: \pr
+  label ' seperator: ' for: \sep, -> input id: \sep, value: SEP
 textarea id: \regex
 
 a href: \https://github.com/satyr/retrie/, -> img do
@@ -23,8 +23,8 @@ a href: \https://github.com/satyr/retrie/, -> img do
 
 script 'new ' + ->
   @[that] = l if l.id for l of document.body.getElementsByTagName \*
-  for l, i of @[\ex, \pr] then do -> l.onclick = -> run i
-  function run =>
+  for l, i of @[\ex \pr] then do -> l.onclick = -> run i
+  function run ~>
     re = try RegExp @sep.value catch then RegExp @re.value = SEP
     @regex.value = Retrie @words.value.split(re), it
 script src: \retrie.js
