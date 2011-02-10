@@ -1,7 +1,8 @@
 textarea {display:block; width:99%; height:6em; border-width:2px 0}
-button {width:20%}
+button {width:16%}
 
 #ctrls, #sep {text-align:center}
+#ctrls span, #ctrls label {margin:0 0.5em; white-space:nowrap}
 
 #ribbon {
  position: fixed; bottom: 0; left: 0; border: 0;

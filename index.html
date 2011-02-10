@@ -1,10 +1,13 @@
-<!DOCTYPE html><title>Retrie</title
-><link rel="stylesheet" href="index.css"/><link rel="stylesheet" href="../coco/doc/doc.css"/><link rel="icon" href="retrie.png"/><textarea id="words">if is instanceof import import_all</textarea
-><div id="ctrls"><button id="ex">Exact</button
-><button id="pr">Prefixes</button
-><label for="sep"> seperator: <input id="sep" value="\s+"/></label
+<!DOCTYPE html><meta charset="utf-8"/><title>Retrie</title
+><link rel="stylesheet" href="index.css"/><link rel="stylesheet" href="../coco/doc/doc.css"/><link rel="icon" href="retrie.png"/><textarea id="words" accesskey="W">if is instanceof import import_all</textarea
+><div id="ctrls"><span>Words ↑</span
+><span>Regex ↓</span
+><span id="buttons"><button id="ex" accesskey="E">Exact</button
+><button id="pr" accesskey="P">Prefixes</button
+></span
+><label for="sep" accesskey="S">Seperator: <input id="sep" value="\s+"/></label
 ></div
-><textarea id="regex"></textarea
+><textarea id="regex" accesskey="R"></textarea
 ><a href="https://github.com/satyr/retrie/"><img alt="fork-me-on-github" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"/></a
 ><script>new function (){
     var l, that, i, _i, _ref, _len, _fn = function(i, l){
@@ -23,7 +26,7 @@
       _fn(i, l);
     }
     function run(it){
-      var re;
+      var re, w;
       re = (function(){
         try {
           return RegExp(this.sep.value);
@@ -31,7 +34,16 @@
           return RegExp(this.re.value = SEP);
         }
       }.call(_this));
-      return _this.regex.value = Retrie(_this.words.value.split(re), it);
+      return _this.regex.value = Retrie((function(){
+        var _i, _ref, _len, _results = [];
+        for (_i = 0, _len = (_ref = this.words.value.split(re)).length; _i < _len; ++_i) {
+          w = _ref[_i];
+          if (w) {
+            _results.push(w);
+          }
+        }
+        return _results;
+      }.call(_this)), it);
     }
     return run;
   }</script
