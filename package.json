@@ -1,0 +1,17 @@
+{"name": "retrie", "version": "0.1.0"
+
+,"description": "Tiny library to make optimized regexes for a specific set of texts"
+,"keywords"   : ["regex", "trie", "coco"]
+
+,"author": "satyr <murky.satyr@gmail.com> (http://satyr.github.com)"
+
+,"licenses":
+ [{"type": "MIT", "url": "https://github.com/satyr/retrie/raw/master/LICENSE.co"}]
+
+,"homepage"  : "http://satyr.github.com/retrie/"
+,"repository": {"type": "git", "url": "git://github.com/satyr/retrie.git"}
+
+,"engines": {"node": ">=0.2.6"}
+
+,"main": "retrie"
+}

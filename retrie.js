@@ -39,7 +39,7 @@
         }
         ((sub = recur(it[chr])) ? alt : cc).push((~'.?*+^$|(){[\\'.indexOf(chr) ? '\\' + chr : chr) + sub);
       }
-      if (q && (sub == null)) {
+      if (q && sub == null) {
         return '';
       }
       cconly = !alt.length;
