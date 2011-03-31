@@ -1,17 +1,19 @@
-<!DOCTYPE html><meta charset="utf-8"/><title>Retrie</title
-><link rel="stylesheet" href="index.css"/><link rel="stylesheet" href="../coco/doc/doc.css"/><link rel="icon" href="retrie.png"/><textarea id="words" accesskey="W">if is instanceof import import_all</textarea
-><div id="ctrls"><span>Words ↑</span
-><span>Regex ↓</span
-><span id="buttons"><button id="ex" accesskey="E">Exact</button
-><button id="pr" accesskey="P">Prefixes</button
-></span
-><label for="sep" accesskey="S">Seperator: <input id="sep" value="\s+"/></label
-></div
-><textarea id="regex" accesskey="R"></textarea
-><a href="https://github.com/satyr/retrie/"><img alt="fork-me-on-github" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"/></a
-><script>new function (){
+<!DOCTYPE html><meta charset="utf-8"/><title
+>Retrie</title><link rel="stylesheet" href="index.css"/><link rel="stylesheet" href="../coco/doc/doc.css"/><link rel="icon" href="retrie.png"/><textarea id="words" accesskey="W"
+>if is in instanceof import</textarea><div id="ctrls"
+><span
+>Words ↑</span><span
+>Regex ↓</span><span id="buttons"
+><button id="ex" accesskey="E"
+>Exact</button><button id="pr" accesskey="P"
+>Prefixes</button></span><label for="sep" accesskey="S"
+>Seperator: <input id="sep" value="\s+"/></label></div><textarea id="regex" accesskey="R"
+></textarea><a href="https://github.com/satyr/retrie/"
+><img alt="fork-me-on-github" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"/></a><script src="retrie.js"
+></script><script
+>new function (){
     var l, that, i, _i, _ref, _len, _fn = function(i, l){
-      return l.onclick = function(){
+      l.onclick = function(){
         return run(i);
       };
     }, _this = this;
@@ -30,7 +32,7 @@
       re = (function(){
         try {
           return RegExp(this.sep.value);
-        } catch (_e) {
+        } catch (e) {
           return RegExp(this.re.value = SEP);
         }
       }.call(_this));
@@ -46,11 +48,9 @@
       }.call(_this)), it);
     }
     return run;
-  }</script
-><script src="retrie.js"></script
-><script src="../coco/doc/showdown.js"></script
-><script src="../coco/doc/prettify.js"></script
-><script src="../coco/doc/lang-co.js"></script
-><script>sources = ['retrie', 'index']</script
-><script src="../coco/doc/doc.js"></script
->
+  }</script><script
+>sources = ['retrie', 'index.html']</script><script src="../coco/doc/showdown.js"
+></script><script src="../coco/doc/prettify.js"
+></script><script src="../coco/doc/lang-co.js"
+></script><script src="../coco/doc/doc.js"
+></script>

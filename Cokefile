@@ -1,7 +1,7 @@
 $ = ->
   [cmd, ...args] = it.split /\s+/
-  require(\child_process).spawn cmd, args, customFds: [0 1 2]
+  require(\child_process)spawn cmd, args, customFds: [0 1 2]
 
 task \compile -> $ 'coco -bc retrie.co'
 task \test    -> $ 'coco test.co'
-task \doc     -> $ 'ckup index.co'
+task \doc     -> $ 'ckup index.html.co'

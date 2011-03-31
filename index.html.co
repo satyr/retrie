@@ -1,4 +1,4 @@
-#### Retrie web interface and documentataion
+#### Retrie web interface and documentation
 
 SEP = \\\s+
 
@@ -11,7 +11,7 @@ link rel: \stylesheet, href: \index.css
 link rel: \stylesheet, href: \../coco/doc/doc.css
 link rel: \icon      , href: \retrie.png
 
-textarea 'if is instanceof import import_all' id: \words, accesskey: \W
+textarea 'if is in instanceof import' id: \words, accesskey: \W
 div id: \ctrls, ->
   span 'Words ↑'
   span 'Regex ↓'
@@ -21,19 +21,20 @@ div id: \ctrls, ->
   label 'Seperator: ' for: \sep, accesskey: \S, -> input id: \sep, value: SEP
 textarea id: \regex, accesskey: \R
 
-a href: \https://github.com/satyr/retrie/, -> img do
+A \https://github.com/satyr/retrie/ -> img do
   alt: \fork-me-on-github, id: \ribbon
   src: \http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png
 
+script src: \retrie.js
 script 'new ' + ->
   @[that] = l if l.id for l of document.body.getElementsByTagName \*
   for l, i of @[\ex \pr] then do -> l.onclick = -> run i
   function run ~>
     re = try RegExp @sep.value catch then RegExp @re.value = SEP
     @regex.value = Retrie (w if w for w of @words.value.split re), it
-script src: \retrie.js
+
+script "sources = ['retrie', 'index.html']"
 script src: \../coco/doc/showdown.js
 script src: \../coco/doc/prettify.js
 script src: \../coco/doc/lang-co.js
-script "sources = ['retrie', 'index']"
 script src: \../coco/doc/doc.js
