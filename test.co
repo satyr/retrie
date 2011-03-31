@@ -1,17 +1,17 @@
-{Retrie} = require \./retrie
-assert   = require \assert
+Retrie = require \./retrie
+{strictEqual: eq} = require \assert
 
-assert.strictEqual do
-  'program(?:(?:m(?:er|ab(?:le|ility))|[s\\$]))?'
-  '' + Retrie <[
-    program
-    programs
-    program$
-    programmer
-    programmable
-    programmability
-  ]>
+eq 'program(?:(?:m(?:er|ab(?:le|ility))|[s\\$]))?',
+   '' + Retrie <[
+     program
+     programs
+     program$
+     programmer
+     programmable
+     programmability
+   ]>
 
-assert.strictEqual do
-  'p(?:r(?:o(?:g(?:r(?:am?)?)?)?)?)?'
-  '' + Retrie <[program]>, true
+eq 'p(?:r(?:o(?:g(?:r(?:am?)?)?)?)?)?',
+   '' + Retrie <[program]>, true
+
+eq Retrie.Retrie, Retrie

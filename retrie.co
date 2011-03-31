@@ -30,3 +30,6 @@
       q and re = if cconly then re + \? else "(?:#{re})?"
       re or ''
     recur @tree
+
+  @<<<{Retrie}
+  module?exports = this
