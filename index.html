@@ -7,16 +7,12 @@
 ><button id="ex" accesskey="E"
 >Exact</button><button id="pr" accesskey="P"
 >Prefixes</button></span><label for="sep" accesskey="S"
->Seperator: <input id="sep" value="\s+"/></label></div><textarea id="regex" accesskey="R"
+>Seperator: <input id="sep" placeholder="\s+"/></label></div><textarea id="regex" accesskey="R"
 ></textarea><a href="https://github.com/satyr/retrie/"
 ><img alt="fork-me-on-github" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"/></a><script src="retrie.js"
 ></script><script
 >new function (){
-    var l, that, i, _i, _ref, _len, _fn = function(i, l){
-      l.onclick = function(){
-        return run(i);
-      };
-    }, _this = this;
+    var l, that, i, _i, _ref, _len;
     for (_i = 0, _len = (_ref = document.body.getElementsByTagName('*')).length; _i < _len; ++_i) {
       l = _ref[_i];
       if (that = l.id) {
@@ -25,29 +21,32 @@
     }
     for (i = 0, _len = (_ref = [this['ex'], this['pr']]).length; i < _len; ++i) {
       l = _ref[i];
-      _fn(i, l);
+      (_fn.call(this, i, l));
     }
-    function run(it){
-      var re, w;
-      re = (function(){
-        try {
-          return RegExp(this.sep.value);
-        } catch (e) {
-          return RegExp(this.re.value = SEP);
-        }
-      }.call(_this));
-      return _this.regex.value = Retrie((function(){
-        var _i, _ref, _len, _results = [];
-        for (_i = 0, _len = (_ref = this.words.value.split(re)).length; _i < _len; ++_i) {
-          w = _ref[_i];
-          if (w) {
-            _results.push(w);
+    function _fn(i, l){
+      var _this = this;
+      l.onclick = function(){
+        var sp, re, w;
+        sp = _this.sep.getAttribute('placeholder');
+        re = (function(){
+          try {
+            return RegExp(this.sep.value || sp);
+          } catch (e) {
+            return RegExp(this.sep.value = sp);
           }
-        }
-        return _results;
-      }.call(_this)), it);
+        }.call(_this));
+        return _this.regex.value = Retrie((function(){
+          var _i, _ref, _len, _results = [];
+          for (_i = 0, _len = (_ref = this.words.value.split(re)).length; _i < _len; ++_i) {
+            w = _ref[_i];
+            if (w) {
+              _results.push(w);
+            }
+          }
+          return _results;
+        }.call(_this)), i);
+      };
     }
-    return run;
   }</script><script
 >sources = ['retrie', 'index.html']</script><script src="../coco/doc/showdown.js"
 ></script><script src="../coco/doc/prettify.js"

@@ -1,7 +1,7 @@
-(exports ? this)Retrie = class
+@Retrie = class
   (strings, asPrefixes) ~>
     @tree = {}
-    @add str, asPrefixes for str of strings if strings
+    @add str, asPrefixes for str of strings or ''
 
   # Adds `string` to the trie and returns self.
   # If `asPrefixes`, instead adds every prefix of `string`. i.e.:
@@ -10,26 +10,26 @@
   #
   add: (string, asPrefixes) ->
     ref = @tree
-    for i from string.length
+    for i til string.length
       ref = ref[string.charAt i] ||= if asPrefixes then {''} else {}
     # Empty string indicates terminator.
-    ref <<< {''} unless asPrefixes
+    asPrefixes or ref <<< {''}
     this
 
   toString: ->
-    function recur ->
+    function recur
       alt = []; cc = []
       for chr in it
         unless chr then q = true; continue
         (if sub = recur it[chr] then alt else cc)push \
           (if ~'.?*+^$|(){[\\'indexOf chr then \\ + chr else chr) + sub
-      return '' if q and not sub?
-      cconly = !alt.length
+      return '' if q and sub!?
+      cconly = not alt.length
       cc.length and alt.push if cc.1 then "[#{ cc.join '' }]" else cc.0
       re = if alt.1 then "(?:#{ alt.join \| })" else alt.0
-      q and re = if cconly then re + \? else "(?:#{re})?"
+      q and re = if cconly then re + \? else "(?:#re)?"
       re or ''
     recur @tree
 
-  @<<<{Retrie}
+  import {Retrie}
   module?exports = this

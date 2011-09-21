@@ -1,17 +1,16 @@
-(typeof exports != 'undefined' && exports !== null ? exports : this).Retrie = (function(){
-  var prototype = Retrie.prototype;
+this.Retrie = (function(){
+  Retrie.displayName = 'Retrie';
+  var prototype = Retrie.prototype, constructor = Retrie;
   function _ctor(){} _ctor.prototype = prototype;
   function Retrie(strings, asPrefixes){
-    var str, _i, _len, _this = new _ctor;
+    var str, _i, _ref, _len, _this = new _ctor;
     _this.tree = {};
-    if (strings) {
-      for (_i = 0, _len = strings.length; _i < _len; ++_i) {
-        str = strings[_i];
-        _this.add(str, asPrefixes);
-      }
+    for (_i = 0, _len = (_ref = strings || '').length; _i < _len; ++_i) {
+      str = _ref[_i];
+      _this.add(str, asPrefixes);
     }
     return _this;
-  } Retrie.displayName = 'Retrie';
+  }
   prototype.add = function(string, asPrefixes){
     var ref, i, _to, _key;
     ref = this.tree;
@@ -22,9 +21,7 @@
         }
         : {});
     }
-    if (!asPrefixes) {
-      ref[''] = '';
-    }
+    asPrefixes || (ref[''] = '');
     return this;
   };
   prototype.toString = function(){
@@ -56,8 +53,9 @@
     }
     return recur(this.tree);
   };
+  Retrie.Retrie = Retrie;
   if (typeof module != 'undefined' && module !== null) {
-    module.exports = (Retrie.Retrie = Retrie, Retrie);
+    module.exports = Retrie;
   }
   return Retrie;
 }());

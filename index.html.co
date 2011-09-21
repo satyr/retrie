@@ -1,37 +1,38 @@
 #### Retrie web interface and documentation
 
-SEP = \\\s+
-
 # Powered by [ckup](http://satyr.github.com/ckup/).
 doctype \html
 meta charset: \utf-8
 title \Retrie
 
-link rel: \stylesheet, href: \index.css
-link rel: \stylesheet, href: \../coco/doc/doc.css
-link rel: \icon      , href: \retrie.png
+link rel:\stylesheet href:\index.css
+link rel:\stylesheet href:\../coco/doc/doc.css
+link rel:\icon       href:\retrie.png
 
-textarea 'if is in instanceof import' id: \words, accesskey: \W
+textarea 'if is in instanceof import' id:\words accesskey:\W
 div id: \ctrls, ->
   span 'Words ↑'
   span 'Regex ↓'
   span id: \buttons, ->
-    button \Exact    id: \ex, accesskey: \E
-    button \Prefixes id: \pr, accesskey: \P
-  label 'Seperator: ' for: \sep, accesskey: \S, -> input id: \sep, value: SEP
-textarea id: \regex, accesskey: \R
+    button \Exact    id:\ex accesskey:\E
+    button \Prefixes id:\pr accesskey:\P
+  label 'Seperator: ' for:\sep accesskey:\S, ->
+    input id:\sep placeholder:\\\s+
+textarea id:\regex accesskey:\R
 
 A \https://github.com/satyr/retrie/ -> img do
-  alt: \fork-me-on-github, id: \ribbon
-  src: \http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png
+  alt:\fork-me-on-github id:\ribbon
+  src:\http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png
 
 script src: \retrie.js
 script 'new ' + ->
   @[that] = l if l.id for l of document.body.getElementsByTagName \*
-  for l, i of @[\ex \pr] then do -> l.onclick = -> run i
-  function run ~>
-    re = try RegExp @sep.value catch then RegExp @re.value = SEP
-    @regex.value = Retrie (w if w for w of @words.value.split re), it
+  for l i of @<[ex pr]> then let
+    l.onclick = ~>
+      sp = @sep.getAttribute \placeholder
+      re = try RegExp @sep.value || sp catch then RegExp @sep.value = sp
+      @regex.value = Retrie (w if w for w of @words.value.split re), i
+  void
 
 script "sources = ['retrie', 'index.html']"
 script src: \../coco/doc/showdown.js
